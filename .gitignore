@@ -1,5 +1,6 @@
 #Openai API Key
 .streamlit
+.env
 
 myenv
 db
