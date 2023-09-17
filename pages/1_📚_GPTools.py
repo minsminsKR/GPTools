@@ -57,7 +57,7 @@ if uploaded_files:
     # Database, Embedding
     with st.spinner("Processing"):
         persist_directory = 'db' # Save to directory named 'db'
-        embedding = OpenAIEmbeddings()
+        embedding = OpenAIEmbeddings(openai_api_key=st.secrets["api_key"])
         vectordb = Chroma.from_documents(
             documents=texts,
             embedding = embedding, # Which embedding
