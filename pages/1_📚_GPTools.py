@@ -86,7 +86,7 @@ if uploaded_files:
                 chat_box = st.empty()
                 stream_hander = StreamHandler(chat_box)
                 qa_chain = RetrievalQA.from_chain_type(
-                    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0, streaming=True, callbacks=[stream_hander]),
+                    llm = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0, streaming=True, callbacks=[stream_hander], openai_api_key=st.secrets["api_key"]),
                     retriever=retriever,
                     return_source_documents = True, 
                     chain_type = "stuff")
