@@ -7,3 +7,4 @@ streamlit
 sentence_transformers
 google
 streamlit_chat
+pysqlite3-binary
