@@ -15,7 +15,9 @@ st.markdown(
     **👈 Select a project from the sidebar** to see more about projects or me?
     	😁 Check it out with below ***"Contact me"***!!
     ### 📚 GPTools
-    Chat with GPT based on your any files. Supported formats are **pdf, docx, doc** and **txt**.
+    Easily find the information you need in your pile of documents.
+    
+    Supported formats are **pdf, docx, doc** and **txt**.
     - [streamlit.io](https://streamlit.io)
     - [langchain](https://www.langchain.com/) 
     - [OpenAI](https://openai.com/)
