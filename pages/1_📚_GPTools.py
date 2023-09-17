@@ -10,6 +10,10 @@ from langchain.callbacks.base import BaseCallbackHandler
 import os
 import openai
 
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 openai.api_key = st.secrets["api_key"]
 
 st.title('🦜🔗Welcome to GPTools :scroll:')
