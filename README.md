@@ -2,7 +2,7 @@
   ***My little project***
 
 ### 1. GPTools
-   - This tool make you guys easily find the information you need in your pile of documents. Supported formats are **pdf, docx, doc** and **txt**.
+   - This tool makes you guys easily find the information you need in your pile of documents. Supported formats are **pdf, docx, doc** and **txt**.
 
   ![pp1](https://github.com/minsminsKR/GPTools/assets/111733617/29fce4cf-b41b-41cb-8156-9e89b5dc8313)
 
