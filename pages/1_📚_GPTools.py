@@ -10,9 +10,12 @@ from langchain.callbacks.base import BaseCallbackHandler
 import os
 import openai
 
+# Streamlit 웹앱에서 Vector DB를 사용하기 위함. 로컬환경에서 사용할 시 비활성화.
+# This code is for using Vector DB in Streamlit web app. Inactivate it when you want in a local environment.
 __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+###########################################################################
 
 openai.api_key = st.secrets["api_key"]
 # 글자 하나씩 실시간으로 띄우기
@@ -28,8 +31,6 @@ class StreamHandler(BaseCallbackHandler):
 def main():
     st.title('🦜🔗Welcome to GPTools :scroll:')
     st.sidebar.success("👆 Select a page above.")
-    
-    
     
     uploaded_files = st.file_uploader("Upload one or multiple files. Supported formats are **pdf, docx, doc** and **txt**. Your files don't be stored here.", accept_multiple_files=True)
     if uploaded_files:
@@ -71,7 +72,7 @@ def main():
         
         # Initialization / If activate this code, the generated vectordb is stored and is not deleted when the Streamlit session ends.
         # vectordb.persist()
-        # vectordb = None
+        vectordb = None
     
         vectordb = Chroma(
             persist_directory = persist_directory,
