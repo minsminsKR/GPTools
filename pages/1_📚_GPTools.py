@@ -71,8 +71,8 @@ def main():
                 embedding = embedding, # Which embedding
                 persist_directory = persist_directory)
         
-        # Initialization / If activate this code, the generated vectordb is stored and is not deleted when the Streamlit session ends.
-        # vectordb.persist()
+        # Initialization
+        vectordb.persist()
         vectordb = None
     
         vectordb = Chroma(
