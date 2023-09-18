@@ -1,7 +1,5 @@
 # GPTools 
 
-**https://homepagepy-onnxappjajhaeef8fveeappj.streamlit.app/**
-
   ***My little project***
 
 ### 1. GPTools
