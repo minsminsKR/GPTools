@@ -63,7 +63,8 @@ def main():
     
         # Database, Embedding
         with st.spinner("Processing"):
-            persist_directory = 'db' # Save to directory named 'db'
+            # persist_directory = 'db' # Save to directory named 'db' (if you want to use in local env)
+            persist_directory = tempfile.mkdtemp() # temporary directory
             embedding = OpenAIEmbeddings(openai_api_key=st.secrets["api_key"])
             vectordb = Chroma.from_documents(
                 documents=texts,
