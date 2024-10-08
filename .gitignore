@@ -1,9 +1,5 @@
 #Openai API Key
 .streamlit
 .env
-
+.devcontainer
 myenv
-db
-articles
-KaTalk_file
-pdf

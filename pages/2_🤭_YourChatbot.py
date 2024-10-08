@@ -148,14 +148,6 @@ def main():
                 return model
             model = cached_model()
     
-            # Embedding (no progress bar)
-            # @st.cache(allow_output_mutation=True)
-            # @st.cache_resource
-            # def get_dataset():
-            #     final_data['embedding'] = final_data['질문'].map(lambda x: list(model.encode(x)))
-            #     return final_data
-            # final_data = get_dataset()
-    
             # 로딩창 추가
             # Load embedding data (add progress bar)
             @st.cache_resource
