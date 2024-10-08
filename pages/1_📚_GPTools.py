@@ -1,3 +1,5 @@
+# RAG 공부하고 그냥 새시작하자
+
 from langchain.chains import RetrievalQA
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.vectorstores import Chroma

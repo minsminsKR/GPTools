@@ -2,7 +2,9 @@ import streamlit as st
 import tempfile
 import re
 import pandas as pd
-from langchain.document_loaders import TextLoader
+# from langchain.document_loaders import TextLoader # 옛날거
+from langchain_community.document_loaders import TextLoader
+
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from streamlit_chat import message
@@ -83,7 +85,8 @@ def main():
         with tempfile.NamedTemporaryFile(delete=False) as temp_file:
             temp_file.write(uploaded_file.read())
             temp_file_path = temp_file.name
-        loader = TextLoader(temp_file_path)
+        # loader = TextLoader(temp_file_path)
+        loader = TextLoader(temp_file_path, encoding = 'utf-8')
         
         all_text_list = loader.load()
         for i in range(len(all_text_list)):

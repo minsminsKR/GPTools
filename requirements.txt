@@ -1,10 +1,20 @@
-langchain
-openai
-tiktoken
-chromadb
-pypdf
+# langchain
+# openai
+# tiktoken
+# chromadb
+# pypdf
+# streamlit
+# sentence_transformers
+# google
+# streamlit_chat
+# pysqlite3-binary
+
+# python.exe -m pip install --upgrade pip
+# python version == 3.11.0
 streamlit
 sentence_transformers
-google
 streamlit_chat
-pysqlite3-binary
+langchain-community
+numpy==1.25.1
+openai
+pysqlite3
