@@ -2,77 +2,13 @@ import streamlit as st
 import tempfile
 import re
 import pandas as pd
-# from langchain.document_loaders import TextLoader # 옛날거
 from langchain_community.document_loaders import TextLoader
 
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 from streamlit_chat import message
 
-def format_conversations(df):
-    '''
-    여러명일경우 하나로 일단 압축시킨다.
-    그리고 챗봇 대상의 "answer"이전 사람의 대사만 "questions"으로 할당한다.
-    If there are multiple people, compress it into one.
-    And only the lines of the person before "answer" to be heard are assigned as "questions."
-    
-    e.g
-    
-    C <- target to make into a Chatbot
-    
-    A : Hi guys
-    B : Hey~
-    B : What are you doing?
-    C : I'm having a meal with ma mates.
-    
-    questions = Hey~ What are you doing?
-    answer = I'm having a meal with ma mates.
-    '''
-    current_name = ''
-    # conversations = []
-    names = []
-    texts = []
-
-    for index, row in df.iterrows():
-        name = row['Name']
-        text = row['Text']
-
-        if name != current_name:
-            names.append(name)
-            texts.append(text)
-            current_name = name
-        else:
-            texts[-1] += ' ' + text # On what basis will the data be divided?
-
-    result_df = pd.DataFrame({'Name': names, 'Text': texts})
-    return result_df
-
-# "answer_user" 기준으로 질문과 답변이 나뉜다.
-# Questions and answers are divided based on "answer_user".
-def question_answer(df, answer_user):
-    questions = []
-    answers = []
-    current_question = ''
-
-    for index, row in df.iterrows():
-        question = current_question
-        answer = ''
-
-        text = row['Text']
-
-        if row['Name'] == answer_user:
-            answer = text
-        else:
-            question = text
-
-        if answer.strip() != '':
-            questions.append(question)
-            answers.append(answer)
-
-        current_question = question
-
-    result_df = pd.DataFrame({'질문': questions, '대답': answers})
-    return result_df
+from tools import *
 
 def main():
 
@@ -100,7 +36,7 @@ def main():
         for line in text_lines:
             # \[(.*?)\]: 대괄호([]) 안의 어떤 문자든지(0개 이상)를 비탐욕적(non-greedy)으로 매칭
             # (.*): 어떤 문자든지(0개 이상)를 탐욕적(greedy)으로 매칭하여 나머지 모든 내용을 추출
-            
+
             # \[(.*?)\]: Matches any character in brackets ([]) as non-greedy
             # (.*): Match any character (more than 0) as greedy and extract all the rest
             

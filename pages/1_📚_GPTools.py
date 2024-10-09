@@ -16,7 +16,8 @@ import tempfile
 from langchain.chat_models import ChatOpenAI
 from langchain.callbacks.base import BaseCallbackHandler
 from langchain.schema import Document  # Document 객체 추가
-import chardet
+from tools import *
+
 
 # OpenAI API Key 설정
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -38,7 +39,7 @@ def main():
     st.sidebar.success("👆 Select a page above.")
 
     uploaded_files = st.file_uploader(
-        "Upload one or multiple files. Supported formats are **pdf, docx, doc**, **csv**, and **txt**.",
+        "Upload one or multiple files. Supported formats are **pdf, docx, doc, xlsx, xls, csv**, and **txt**. Your files don't be stored here.",
         accept_multiple_files=True
     )
 
@@ -68,15 +69,9 @@ def main():
             elif file_extension in [".xlsx", ".xls"]:
                 loader = UnstructuredExcelLoader(temp_file_path)
             elif file_extension == ".txt":
-                # 텍스트 파일의 인코딩 자동 감지 후 읽기
-                with open(temp_file_path, 'rb') as f:
-                    raw_data = f.read()
-                    encoding = chardet.detect(raw_data)['encoding']
-
-                # 감지된 인코딩으로 파일 읽기
                 try:
-                    with open(temp_file_path, 'r', encoding=encoding) as f:
-                        text.append(f.read())
+                    text_content = load_txt_file(temp_file_path)
+                    text.append(text_content)
                 except Exception as e:
                     st.error(f"Failed to load txt file: {e}")
 
@@ -135,7 +130,7 @@ def main():
                             temperature=0,
                             streaming=True,
                             callbacks=[stream_handler],
-                            openai_api_key=os.getenv("OPENAI_API_KEY") # # openai.api_key = st.secrets["api_key"]
+                            openai_api_key=os.getenv("OPENAI_API_KEY") # openai.api_key = st.secrets["api_key"]
                         ),
                         retriever=retriever,
                         return_source_documents=True,
