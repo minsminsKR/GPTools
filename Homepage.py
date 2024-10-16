@@ -11,6 +11,8 @@ st.sidebar.success("👆 Select a page above.")
 
 st.markdown(
     """
+    [![view source code ](https://img.shields.io/badge/GitHub%20Repository-gray?logo=github)](https://github.com/minsminsKR/GPTools)
+    
     ##### LLM ai projects. 
     **👈 Select a project from the sidebar** to see more about projects or me?
     	
