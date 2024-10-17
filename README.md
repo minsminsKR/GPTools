@@ -11,7 +11,7 @@
      
      여러 종류의 문서 파일에서 필요한 정보를 쉽게 찾을 수 있습니다. 지원되는 형식은 **pdf, docx, doc, txt, csv, xlsx, xls**입니다.
 
-  ![pp1](https://github.com/minsminsKR/GPTools/assets/111733617/29fce4cf-b41b-41cb-8156-9e89b5dc8313)
+![gptools1](https://github.com/user-attachments/assets/2c23f9f7-8c56-49e9-a9b3-544ea4f9df14)
 
 
 
