@@ -1,5 +1,19 @@
+import streamlit as st
 import pandas as pd
 import chardet
+import time
+
+# 세션 초기화 함수
+def reset_chat():
+    st.session_state.messages = [{"role": "assistant", "content": "May I help you?"}]
+
+# GPT의 응답을 한 글자씩 출력하는 함수
+def display_typing_effect(message_container, text, delay=0.05):
+    full_text = ""
+    for char in text:
+        full_text += char
+        message_container.markdown(full_text)  # 실시간으로 컨테이너 업데이트
+        time.sleep(delay)
 
 def detect_encoding(file_path):
     """파일의 인코딩을 자동으로 감지하여 반환합니다."""
